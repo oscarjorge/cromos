@@ -5,12 +5,12 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: '<your-key>',
-    authDomain: '<your-project-authdomain>',
-    databaseURL: '<your-database-URL>',
-    projectId: '<your-project-id>',
-    storageBucket: '<your-storage-bucket>',
-    messagingSenderId: '<your-messaging-sender-id>'
+    apiKey: "AIzaSyCqErR2otkCNd27LAxUaDodo9leOTqqHBE",
+    authDomain: "cromos-23c76.firebaseapp.com",
+    databaseURL: "https://cromos-23c76.firebaseio.com",
+    projectId: "cromos-23c76",
+    storageBucket: "cromos-23c76.appspot.com",
+    messagingSenderId: "532661155099"
   }
 };
 
