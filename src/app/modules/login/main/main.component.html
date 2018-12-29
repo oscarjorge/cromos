@@ -1,18 +1,22 @@
+
+
 <mat-card class="container-main">
-  <div class="top mt-2"><b>{{(register)?'Register':'Login'}}</b></div>
-  <app-login *ngIf="!register" class="mt-3"></app-login>
-  <app-register *ngIf="register" class="mt-3"></app-register>
-  <div class="bottom text-muted mt-3">Or login with</div>
-  <div class="bottom row mt-3">
-    <div class="col-6">
-        <button mat-raised-button color="primary" (click)="loginGoogle()"><i class="fab fa-google-plus-square"></i> Google</button>
+    <img class="icon-app" src="/assets/logo.png">
+    <div class="top mt-2"><b>{{(register)?'Register':'Login'}}</b></div>
+    <app-login *ngIf="!register" class="mt-3"></app-login>
+    <app-register *ngIf="register" class="mt-3"></app-register>
+    <div class="bottom text-muted mt-3">Or login with</div>
+    <div class="bottom row mt-3">
+        <div class="col-6">
+            <button mat-raised-button color="primary" (click)="loginGoogle()"><i class="fab fa-google-plus-square"></i>
+                Google</button>
+        </div>
+        <div class="col-6">
+            <button mat-raised-button color="primary"><i class="fab fa-facebook-square"></i> Facebook</button>
+        </div>
     </div>
-    <div class="col-6">
-        <button mat-raised-button color="primary"><i class="fab fa-facebook-square"></i> Facebook</button>
-      </div>
-  </div>
-  <div class="bottom text-muted mt-3 pointer" (click)="register=!register">
-      {{(register)?'Login':' Not a member? Sign up now'}}
-   
-  </div>
+    <div class="bottom text-muted mt-3 pointer" (click)="register=!register">
+        {{(register)?'Login':' Not a member? Sign up now'}}
+
+    </div>
 </mat-card>

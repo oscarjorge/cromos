@@ -13,19 +13,29 @@ import { environment } from '../environments/environment';
 import { AppRouting } from './app.routing';
 import { MaterialModule } from './modules/material/material.module';
 import { AuthGuard } from './services/auth.guard';
-
+import { MainNavbarComponent } from './components/main-navbar/main-navbar.component';
+import { UserInfoComponent } from './components/user-info/user-info.component';
+import { ColeccionesComponent } from './components/colecciones/colecciones.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MainNavbarComponent,
+    UserInfoComponent,
+    ColeccionesComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,
     AppRouting,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFirestoreModule, 
     AngularFireStorageModule, // imports firebase/storage only needed for storage features,
-    BrowserAnimationsModule,
     AngularFireAuthModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
     MaterialModule
   ],
   providers: [

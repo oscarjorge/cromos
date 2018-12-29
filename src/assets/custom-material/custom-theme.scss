@@ -1,0 +1,50 @@
+// @import '../../../node_modules/@angular/material/theming';
+
+// @include mat-core();
+
+// $custom-theme-primary: mat-palette($mat-light-blue);
+// $custom-theme-accent: mat-palette($mat-orange, A200, A100, A400);
+// $custom-theme-warn: mat-palette($mat-red);
+
+// $custom-theme: mat-light-theme($custom-theme-primary, $custom-theme-accent, $custom-theme-warn);
+
+// @mixin custom-theme($theme) {
+//   @include ml-file-tree-theme(theme);
+// }
+
+// @include angular-material-theme($custom-theme);
+// @include custom-theme($custom-theme);
+
+
+
+
+@import '../../../node_modules/@angular/material/theming';
+ 
+@include mat-core();
+$primary: mat-palette($mat-teal, 600);
+$accent:  mat-palette($mat-orange, 600, 100, 800);
+$warn:    mat-palette($mat-red, 600);
+$theme: mat-light-theme($primary, $accent, $warn);
+ 
+@include angular-material-theme($theme);
+ 
+@mixin supporting-theme($theme) {
+    // Extract whichever individual palettes you need from the theme.
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+  
+    .mat-list-item.mat-list-item-focus .mat-icon {
+        color: mat-color($accent);
+    }
+ 
+    footer {
+        background-color: mat-color($primary);
+        color: white;
+    }
+ 
+    footer a {
+        color: white;
+    }
+}
+ 
+@include supporting-theme($theme);

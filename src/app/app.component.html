@@ -1,31 +1,7 @@
 
-<nav class="navbar navbar-expand-lg fixed-top" role="navigation">
-    <div class="container">
-        <a class="navbar-brand" href="#"><img class="icon-brand" src="assets/share.png"></a>
-        <button  *ngIf="logged" class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
-            &#9776;
-        </button>
-        <div class="collapse navbar-collapse" id="exCollapsingNavbar" *ngIf="logged">
-            <ul class="nav navbar-nav">
-                <li class="nav-item">Colecciones</li>
-                <li class="nav-item">Cromos</li>
-                
-            </ul>
-            <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
-                
-                <li class="dropdown order-1">
-                    <!-- <button *ngIf="!logged" mat-raised-button color="primary" (click)="login">
-                        Login
-                      </button> -->
-                      <button mat-raised-button color="primary" (click)="logout()">
-                            Logout
-                          </button>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<div class="container-app">
-        <router-outlet></router-outlet>
-</div>
 
+
+    <app-main-navbar></app-main-navbar>
+    <div class="container-app">
+        <router-outlet></router-outlet>
+    </div>

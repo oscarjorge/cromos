@@ -9,9 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.less'],
-  encapsulation: ViewEncapsulation.None,
-  host: {'class': 'login-container'}
+  styleUrls: ['./login.component.less']
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;

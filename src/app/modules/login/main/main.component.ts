@@ -6,7 +6,9 @@ import { MatSnackBar } from '@angular/material';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.less']
+  styleUrls: ['./main.component.less'],
+  encapsulation: ViewEncapsulation.None,
+  host:{'class': 'login-container'}
 })
 export class MainComponent implements OnInit {
   register: boolean;
@@ -21,12 +23,12 @@ export class MainComponent implements OnInit {
       .subscribe(res => {
         this.register = false;
       })
-      this.authService.loginSuccess$
+      this.authService.loginPasswordSuccess$
       .subscribe(res => {
         this.register = false;
-        this.router.navigateByUrl('');
+        this.router.navigateByUrl('colecciones');
       })
-      this.authService.loginError$
+      this.authService.loginPasswordError$
       .subscribe(res => {
         const ref = this.snackBar.open(res.message,'OK', {
           duration: 0,
@@ -35,7 +37,7 @@ export class MainComponent implements OnInit {
       this.authService.loginGoogleSuccess$
       .subscribe(res => {
         this.register = false;
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('colecciones');
       })
       this.authService.loginGoogleError$
       .subscribe(res => {
