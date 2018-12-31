@@ -1,26 +1,66 @@
 @import "../../../less/@colors.less";
-.navbar{
+
+.navbar {
     background-color: @primary;
-    .icon-brand
-    {
+    .icon-brand {
         width: 36px;
         height: 36px;
     }
-    .nav-item{
-        a{
-            color: @blank;
+    .navbar-nav{
+        &:nth-child(1){
+            margin: 0 auto;   
         }
-        
-        padding: .5em;
+        .nav-item {
+            a {
+                color: @white;
+            }
+            padding: .5em;
+            .nav-link {
+                border-radius: 4px;
+                background-color: @primary-lighten-1;
+                &:active {
+                    background-color: @primary-darken-1;
+                    color: @white;
+                }
+                &.active {
+                    font-weight: bold;
+                }
+                &.active:active {
+                    background-color: @primary-darken-1;
+                }
+            }
+        }
     }
-    .navbar-toggler{
-        color: @blank;
+    
+    
+    .navbar-toggler {
+        color: @white;
     }
-    .dropdown-menu{
+    .dropdown-menu {
         background-color: @primary;
-        .dropdown-item:hover{
-            color: @primary;
-            
+        .dropdown-item:hover {
+            background-color: @primary-lighten-1;
+        }
+        .dropdown-item:active {
+            background-color: @primary-darken-1;
+            color: @white;
+        }
+        .dropdown-item.active {
+            background-color: @primary-lighten-1;
+        }
+        .dropdown-item.active:active {
+            background-color: @primary-darken-1;
         }
     }
+}
+.navbar-collapse{
+    .nav-link{
+        padding: .5em;
+        border-radius: 20px;
+        text-align: center;
+    }
+    .navbar-nav:nth-child(2){
+        text-align: center;
+    }
+   
 }

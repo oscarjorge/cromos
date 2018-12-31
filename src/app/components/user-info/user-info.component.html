@@ -2,7 +2,8 @@
   <img *ngIf="user.photo" class="rounded-circle" [src]="user.photo">
   {{(user.name)?user.name: user.mail}}
 </span>
-<span class="user-info pointer" *ngIf="!user" (click)="goToAuth()">
-    <i class="fas fa-user"></i>
-   Entra
+<span *ngIf="!user" (click)="goToAuth()">
+    <button mat-raised-button color="primary" (click)="goToAuth()">
+        <i class="fas fa-sign-in-alt"></i>
+    </button>
   </span>
