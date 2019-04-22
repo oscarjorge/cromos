@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { CollectionService } from 'src/app/services/collection.service';
-import { ICollection } from 'src/app/models/collection';
+import { ICollection, Collection } from 'src/app/models/collection';
 @Component({
   selector: 'app-colecciones',
   templateUrl: './colecciones.component.html',
@@ -9,27 +9,27 @@ import { ICollection } from 'src/app/models/collection';
 })
 export class ColeccionesComponent implements OnInit {
   collections: ICollection[];
-  collectionEdit: ICollection;
+  collectionEdit: ICollection = new Collection();
   constructor(
     private collectionService: CollectionService, 
     private snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
-
-    this.collectionService.collectionsSuccess$.subscribe(
+    
+    this.collectionService.collections.subscribe(
       (collections)=>{
         this.collections = collections;
-        this.snackBar.open('Las colecciones han sido devueltas.','OK');
+        //this.snackBar.open('Las colecciones han sido devueltas.','OK');
       },
       (error)=>{
         this.snackBar.open('Se ha producido un error al obtener las collecciones.','OK');
       }
     )
-    this.collectionService.getCollections();
+    this.collectionService.get();
   }
   addCollection(collection:ICollection){
-    this.collectionEdit = null;
+    this.collectionEdit = new Collection();
   }
   editCollection(collection:ICollection){
     this.collectionEdit = collection;

@@ -1,0 +1,60 @@
+<form [formGroup]="form">
+    <div class="container-form">
+      <div class="item">
+        <mat-form-field>
+          <input matInput placeholder="Nombre" formControlName="name">
+        </mat-form-field>
+      </div>
+      <div class="item">
+        <div class="upload-btn-wrapper" *ngIf="collection.uid">
+          <button class="btn">Seleccione una imagen</button>
+          <input type="file" name="myfile" (change)="upload($event)" accept=".png,.jpg" />
+          <img *ngIf="form.get('image').value" [src]="form.get('image').value">
+        </div>
+
+        <div class="progress" *ngIf="collection.uid">
+          <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadProgress | async) + '%'"
+            [attr.aria-valuenow]="(uploadProgress | async)" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+      <div class="item">
+        <mat-form-field>
+          <textarea matInput placeholder="Descripción" formControlName="description"></textarea>
+        </mat-form-field>
+      </div>
+      <div class="item">
+        <mat-form-field>
+          <input matInput placeholder="Marca" formControlName="brand">
+        </mat-form-field>
+      </div>
+      <div class="item">
+        <mat-form-field>
+          <input matInput placeholder="Tipo de cromo" formControlName="sticker_type">
+        </mat-form-field>
+      </div>
+      <div class="item">
+        <mat-form-field>
+          <input matInput numberOnly type="number" placeholder="Precio del sobre" formControlName="price_packet">
+        </mat-form-field>
+      </div>
+      <div class="item">
+        <mat-form-field>
+          <input matInput numberOnly type="number" placeholder="Precio del álbum" formControlName="price_album">
+        </mat-form-field>
+      </div>
+      <div class="item">
+        <mat-form-field>
+          <input matInput placeholder="Url página" formControlName="url_page">
+        </mat-form-field>
+      </div>
+      <div class="item">
+        <mat-form-field>
+          <textarea matInput placeholder="Notas" formControlName="notes"></textarea>
+        </mat-form-field>
+      </div>
+      <!-- <div class="item">
+        <button mat-raised-button color="primary" class="float-right"><i *ngIf="guardando" class="fas fa-spinner fa-pulse"></i>
+          Guardar</button>
+      </div> -->
+    </div>
+  </form>

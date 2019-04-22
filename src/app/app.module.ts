@@ -19,13 +19,17 @@ import { ColeccionesComponent } from './components/colecciones/colecciones.compo
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminGuard } from './services/admin.guard';
+import { CleanNavbarComponent } from './components/clean-navbar/clean-navbar.component';
+import { SocialActivityComponent } from './components/social-activity/social-activity.component';
 @NgModule({
   declarations: [
     AppComponent,
     MainNavbarComponent,
     UserInfoComponent,
     ColeccionesComponent,
-    PerfilComponent
+    PerfilComponent,
+    CleanNavbarComponent,
+    SocialActivityComponent
   ],
   imports: [
     BrowserModule,

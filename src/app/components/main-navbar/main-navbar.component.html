@@ -23,9 +23,7 @@
             <ul class="nav navbar-nav">
                 <li class="user">
                     <app-user-info></app-user-info>
-                    <button *ngIf="user" mat-raised-button color="accent" (click)="logout()">
-                        <i class="fas" [ngClass]="{'fa-sign-out-alt':user, 'fa-sign-in-alt':!user}"></i>
-                    </button>
+                    
                 </li>
             </ul>
         </div>

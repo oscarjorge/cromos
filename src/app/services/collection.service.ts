@@ -1,48 +1,53 @@
 import { Injectable } from '@angular/core';
-import { ICollection } from '../models/collection';
-import { Subject } from 'rxjs';
+import { ICollection, Collection } from '../models/collection';
+import { Subject, Observable } from 'rxjs';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CollectionService {
-  collectionsError$ = new Subject<any>();
-  collectionsSuccess$ = new Subject<ICollection[]>();
-  constructor(private afs: AngularFirestore) { 
-    
-    
+  collections:Observable<Collection[]>  ;
+  constructor(private afs: AngularFirestore) {
+    this.collections = <Observable<Collection[]>>this.afs.collection('collection').valueChanges();
+    this.collections = this.afs.collection("collection").snapshotChanges().pipe(
+      map(
+        changes => {
+          return changes.map(
+            a => {
+              const data = a.payload.doc.data() as Collection;
+              data.uid = a.payload.doc.id;
+              return data;
+            });
+        }));
+
   }
-  
-  getCollections(){
-    this.afs.collection('collection').snapshotChanges()
-    .subscribe(
-      (collectionsSnapshot) => {
-        const collections: ICollection[]=[];
-        collectionsSnapshot.forEach(c=>{
-          const collection: ICollection = {
-            uid: c.payload.doc.id,
-            name: c.payload.doc.get('name'),
-            description: c.payload.doc.get('description'),
-            image: c.payload.doc.get('image')
-          };
-          collections.push(collection);
-        })
-        this.collectionsSuccess$.next(collections)
+  getData(){
+    return this.collections;
+  }
+  get(){
+    this.afs.collection('collection').get().subscribe(
+      querySnapshot=> {
+        querySnapshot.forEach(function(doc) {
+          // doc.data() is never undefined for query doc snapshots
+          console.log(doc.id, " => ", doc.data());
+        });
       },
-      (error)=>{
-        this.collectionsError$.next(error);
+      error=> {
+        console.log("Error getting documents: ", error);
       }
-    )
+    );
   }
-  create(data:ICollection){
-    console.log('a');
-    return this.afs.collection('collection').add(Object.assign({}, data));
+  create(data: ICollection) {
+    const plainData = JSON.parse(JSON.stringify(data));
+    return this.afs.collection('collection').add(plainData);
   }
-  update(data:ICollection){
-    return this.afs.collection('collection').doc(data.uid).set(Object.assign({}, data));
+  update(data: ICollection) {
+    const plainData = JSON.parse(JSON.stringify(data));
+    return this.afs.collection('collection').doc(data.uid).set(plainData);
   }
-  delete(data:ICollection){
+  delete(data: ICollection) {
     return this.afs.collection('collection').doc(data.uid).delete();
   }
 }

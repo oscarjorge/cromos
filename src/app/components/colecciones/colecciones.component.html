@@ -1,10 +1,29 @@
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
+<app-clean-navbar></app-clean-navbar>
+<div class="container-collection">
+  <div class="row">
+    <div class="header col-12">
+      <div class="center-element logo">
+        <span>
+          <a href="#"><img class="icon-brand" src="assets/logo.png"></a>
+        </span>
+      </div>
+      <div class="center-element input-search">
+        <mat-form-field>
+          <input matInput placeholder="criterio" [(ngModel)]="criterio">
+          <mat-icon matSuffix>search</mat-icon>
+          <mat-hint>Busca colecciones</mat-hint>
+        </mat-form-field>
+      </div>
 
-<p>
-  colecciones works!
-</p>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="header col-9">
+      colecciones
+    </div>
+    <div class="col-3" *ngIf="user">
+      <app-social-activity></app-social-activity>
+    </div>
+  </div>
+</div>

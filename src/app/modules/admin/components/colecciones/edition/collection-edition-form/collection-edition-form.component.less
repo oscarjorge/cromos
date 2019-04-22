@@ -1,0 +1,48 @@
+@import "../../../../../../../less/@colors.less";
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+.btn {
+    border: 1px solid @primary;
+    color: @primary;
+    background-color: @white;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 14 px;
+    font-weight: bold;
+}
+.upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+.progress {
+    width: 100%;
+}
+img{
+    margin:.5em;
+    width: 42px;
+    height: 42px;
+}
+.container-form{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 5px;
+    .item{
+        mat-form-field{
+            width: 80%;
+        }
+        // &:nth-of-type(10){
+        //     grid-column-start: 1;
+        //     grid-column-end: 3;
+        //     button{
+        //         width: 100%;
+        //     }
+        // }
+    }
+}

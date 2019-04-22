@@ -1,54 +1,28 @@
+
 <mat-card>
   <mat-card-header>
-    <mat-card-title>{{(collection)?collection.name:'Añadir colección'}}</mat-card-title>
+    <mat-card-title>
+
+              {{(collection)?collection.name:'Añadir colección'}}
+  
+      
+      
+    </mat-card-title>
   </mat-card-header>
-  <form [formGroup]="form" (ngSubmit)="save()">
-    <div class="row">
-      <div class="col-12 col-md-6">
-        <div class="row">
-          <div class="col-12">
-            <mat-form-field>
-              <input matInput placeholder="Nombre" formControlName="name">
-            </mat-form-field>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12 col-md-6">
-            <mat-form-field>
-              <input matInput placeholder="Descripción" formControlName="description">
-            </mat-form-field>
-          </div>
-        </div>
-        <!-- <div class="row">
-          <div class="col-12 col-md-6">
-            <mat-form-field>
-              <input matInput placeholder="Imagen" formControlName="image">
-            </mat-form-field>
-          </div>
-        </div> -->
-      </div>
-
-      <div class="col-12 col-md-6" *ngIf="collection">
-        <div class="row">
-          <div class="upload-btn-wrapper">
-            <button class="btn">Seleccione una imagen</button>
-            <input type="file" name="myfile" (change)="upload($event)" accept=".png,.jpg" />
-            <img *ngIf="form.get('image').value" [src]="form.get('image').value">
-          </div>
-          <br><br>
-          <div class="progress">
-            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadProgress | async) + '%'"
-              [attr.aria-valuenow]="(uploadProgress | async)" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="row">
-      <div class="col-12">
-        <button mat-raised-button color="primary" class="float-right">Guardar</button>
-      </div>
-    </div>
-  </form>
+  <mat-tab-group>
+    <mat-tab label="Colección">
+      <collection-edition-form #collectionForm [collection]="collection"></collection-edition-form>
+    </mat-tab>
+    <mat-tab label="Secciones">
+      <collection-edition-section #sections [collection]="collection"></collection-edition-section>
+    </mat-tab>
+    <mat-tab label="Cromos"> Content 3 </mat-tab>
+  </mat-tab-group>
+  <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="save()" class="float-rigth"><i *ngIf="guardando" class="fas fa-spinner fa-pulse"></i>
+        Guardar</button>
+        <button mat-raised-button color="primary" (click)="toDashboard()" class="float-rigth"><i *ngIf="guardando" class="fas fa-spinner fa-pulse"></i>
+          Volver</button>
+  </mat-card-actions>
+  
 </mat-card>
